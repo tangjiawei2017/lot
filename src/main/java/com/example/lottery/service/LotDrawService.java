@@ -2602,12 +2602,17 @@ public class LotDrawService {
 
         // 检查组合数量是否过大（防止OOM）
         long combinationCount = calculateCombinationCount(users.size(), count);
-        if (combinationCount > 10000) { // 限制最大组合数为10000
-            log.warn("[抽签] 组合数量过大({})，跳过组合生成", combinationCount);
+        
+        // 组合数量限制：超过1000个组合直接跳过
+        if (combinationCount > 1000) {
+            // 只在DEBUG级别记录，避免日志污染
+            log.debug("[抽签] 组合数量过大(C({},{})={})，跳过组合生成", 
+                    users.size(), count, combinationCount);
             return result;
         }
 
         generateCombinations(users, 0, count, new ArrayList<>(), result, startTime, timeLimit);
+        
         return result;
     }
 
@@ -2630,13 +2635,13 @@ public class LotDrawService {
                                       long startTime, long timeLimit) {
         // 检查时间限制
         if (System.currentTimeMillis() - startTime > timeLimit) {
-            log.warn("[抽签] 组合生成超时，已生成{}个组合", result.size());
+            log.debug("[抽签] 组合生成超时，已生成{}个组合", result.size());
             return;
         }
 
         // 检查结果数量限制
         if (result.size() > 10000) {
-            log.warn("[抽签] 组合数量达到上限({})，停止生成", result.size());
+            log.debug("[抽签] 组合数量达到上限({})，停止生成", result.size());
             return;
         }
 
