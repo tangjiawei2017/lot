@@ -2305,4 +2305,130 @@ public class LotDrawServiceTest {
             log.warn("⚠️ 算法可能未优化，8个签项耗时{}ms较长", duration);
         }
     }
+
+    /**
+     * 测试466人分成8个签项，每个签项需要>=9个女生的场景
+     * 验证P1规则中取最小值的逻辑
+     */
+    @Test
+    public void test466Users8SignsWithGirlsRequirement() {
+        System.out.println("=== 测试466人8个签项，每个签项>=9个女生 ===");
+        log.info("=== 测试466人8个签项，每个签项>=9个女生 ===");
+        
+        Long activityId = 999999L;
+        
+        // 生成466个用户
+        List<String> allUsers = new ArrayList<>();
+        for (int i = 1; i <= 466; i++) {
+            allUsers.add("user" + String.format("%03d", i));
+        }
+        
+        // 假设前200个用户是女生（用于测试）
+        List<String> girlUsers = allUsers.subList(0, 200);
+        List<String> boyUsers = allUsers.subList(200, 466);
+        
+        // 创建8个签项
+        Map<Long, List<LotRuleGroup>> signGroups = new HashMap<>();
+        Map<Long, Map<Long, List<String>>> signGroupDetails = new HashMap<>();
+        Map<Long, Integer> signTotalCounts = new HashMap<>();
+        
+        for (int signIndex = 1; signIndex <= 8; signIndex++) {
+            Long signId = (long) signIndex;
+            
+            // 每个签项需要>=9个女生
+            Long ruleId = signId * 1000 + 1;
+            LotRuleGroup girlRule = createTestRuleGroup(ruleId, signId, 1, ">=", 9);
+            
+            List<LotRuleGroup> rules = new ArrayList<>();
+            rules.add(girlRule);
+            signGroups.put(signId, rules);
+            
+            // 所有女生都是候选人
+            Map<Long, List<String>> groupDetails = new HashMap<>();
+            groupDetails.put(ruleId, girlUsers);
+            signGroupDetails.put(signId, groupDetails);
+            
+            // 每个签项总人数限制为30人（包含女生和其他人），确保有足够容量满足>=9个女生
+            signTotalCounts.put(signId, 30);
+        }
+        
+        long startTime = System.currentTimeMillis();
+        try {
+            System.out.println("开始执行分配...");
+            System.out.println("总用户数: " + allUsers.size());
+            System.out.println("女生数量: " + girlUsers.size());
+            System.out.println("签项数量: " + signGroups.size());
+            System.out.println("每个签项需求: >=9个女生");
+            System.out.println("每个签项总容量: 30人");
+            System.out.println("总需求女生数: " + (8 * 9) + "个");
+            
+            MultiSignAssignResult result = lotDrawService.drawLotsMultiSign(activityId, signGroups, signGroupDetails, signTotalCounts, allUsers);
+            
+            long endTime = System.currentTimeMillis();
+            long duration = endTime - startTime;
+            
+            System.out.println("=== 466人8签项测试结果 ===");
+            System.out.println("总耗时: " + duration + "ms");
+            
+            if (result != null && !result.totalAssignedUsers.isEmpty()) {
+                System.out.println("✅ 分配成功！");
+                System.out.println("总分配用户数: " + result.totalAssignedUsers.size());
+                
+                // 统计每个签项的女生分配情况
+                int totalGirlsAssigned = 0;
+                boolean allRulesSatisfied = true;
+                
+                for (Map.Entry<Long, AssignResult> entry : result.signResults.entrySet()) {
+                    Long signId = entry.getKey();
+                    AssignResult signResult = entry.getValue();
+                    
+                    // 统计该签项中分配的女生数量
+                    int girlsInSign = 0;
+                    for (String user : signResult.usedUserCodes) {
+                        if (girlUsers.contains(user)) {
+                            girlsInSign++;
+                        }
+                    }
+                    
+                    totalGirlsAssigned += girlsInSign;
+                    
+                    // 检查是否满足>=9个女生的要求
+                    boolean ruleSatisfied = girlsInSign >= 9;
+                    if (!ruleSatisfied) {
+                        allRulesSatisfied = false;
+                        System.out.println("❌ 签项" + signId + ": 分配" + girlsInSign + "个女生，总分配" + signResult.usedUserCodes.size() + "人 - 不满足>=9要求");
+                    } else {
+                        System.out.println("✅ 签项" + signId + ": 分配" + girlsInSign + "个女生，总分配" + signResult.usedUserCodes.size() + "人 - 满足>=9要求");
+                    }
+                }
+                
+                System.out.println("总分配女生数: " + totalGirlsAssigned + "个");
+                System.out.println("预期女生数: " + (8 * 9) + "个");
+                System.out.println("女生分配率: " + (totalGirlsAssigned * 100.0 / (8 * 9)) + "%");
+                System.out.println("所有P1规则满足: " + (allRulesSatisfied ? "✅ 是" : "❌ 否"));
+                
+                log.info("✅ 分配成功！");
+                log.info("总分配用户数: {}", result.totalAssignedUsers.size());
+                log.info("总分配女生数: {}个", totalGirlsAssigned);
+                log.info("所有P1规则满足: {}", allRulesSatisfied);
+                
+            } else {
+                System.out.println("❌ 分配失败");
+                log.info("❌ 分配失败");
+            }
+            
+        } catch (Exception e) {
+            long endTime = System.currentTimeMillis();
+            long duration = endTime - startTime;
+            
+            System.out.println("=== 466人8签项测试结果 ===");
+            System.out.println("总耗时: " + duration + "ms");
+            System.out.println("❌ 分配失败: " + e.getMessage());
+            e.printStackTrace();
+            
+            log.info("=== 466人8签项测试结果 ===");
+            log.info("总耗时: {}ms", duration);
+            log.info("❌ 分配失败: {}", e.getMessage());
+        }
+    }
 } 

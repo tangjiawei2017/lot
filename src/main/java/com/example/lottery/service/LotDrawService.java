@@ -881,13 +881,16 @@ public class LotDrawService {
                                         continue;
                                     }
                                     
-                                    // 如果签项剩余容量不足，调整分配数量
-                                    int actualAssignCount = Math.min(value, signRemainingCapacity);
-                                    if (actualAssignCount < value) {
-                                        log.warn("[抽签] 活动{} - P1规则{}分配数量从{}调整为{}（签项{}剩余容量限制）", 
-                                            activityId, r.group.getId(), value, actualAssignCount, r.signId);
-                                        assignedUsers = allCandidates.subList(candidateIndex, candidateIndex + actualAssignCount);
+                                    // 严格检查：P1规则必须满足最小值要求
+                                    if (signRemainingCapacity < value) {
+                                        log.warn("[抽签] 活动{} - P1规则{}要求{}人，但签项{}剩余容量只有{}人，无法满足P1规则", 
+                                            activityId, r.group.getId(), value, r.signId, signRemainingCapacity);
+                                        // 无法满足P1规则，跳过此规则
+                                        continue;
                                     }
+                                    
+                                    int actualAssignCount = value; // P1规则必须满足最小值
+                                    assignedUsers = allCandidates.subList(candidateIndex, candidateIndex + actualAssignCount);
                                     
                                     for (String user : assignedUsers) {
                                         globalUserManager.assignUser(user, r.signId);
@@ -2165,6 +2168,10 @@ public class LotDrawService {
                                                   signUsedCounts, signTotalCounts, startTime, timeLimit, result)) {
                 result.setSuccessful(true);
                 result.getConflictMessages().clear();
+            } else {
+                // P1规则分配失败，直接返回失败结果，不执行后续兜底逻辑
+                log.warn("[抽签] 活动{} - P1规则分配失败，无法满足所有P1规则要求", activityId);
+                return result;
             }
         }
 
@@ -2414,8 +2421,18 @@ public class LotDrawService {
             // 基于用户稀缺度选择用户：稀缺度高的用户优先
             List<String> selectedUsers = selectBestUsers(availableCandidates, userConflictCount,
                     workingCandidates, usedUsers, assignCount);
+            
+            // 严格检查：P1规则必须满足最小值要求
             if (selectedUsers.size() < minNeed) {
+                log.debug("[抽签] P1规则{}要求至少{}人，但只分配到{}人，分配失败", 
+                        group.getRuleId(), minNeed, selectedUsers.size());
                 return false;
+            }
+            
+            // 对于>=规则，如果分配数量超过最小值，记录日志
+            if (">=".equals(symbol) && selectedUsers.size() > minNeed) {
+                log.debug("[抽签] P1规则{}要求>={}人，实际分配{}人", 
+                        group.getRuleId(), minNeed, selectedUsers.size());
             }
             // 应用分配
             result.ruleAssignments.put(group.getRuleId(), new ArrayList<>(selectedUsers));
@@ -2440,6 +2457,14 @@ public class LotDrawService {
                                          Set<String> usedUsers,
                                          int needCount) {
         if (availableCandidates.isEmpty() || needCount <= 0) return Collections.emptyList();
+        
+        // 确保availableCandidates数量足够
+        if (availableCandidates.size() < needCount) {
+            log.debug("[抽签] 可用候选人数量({})不足，需要{}人", availableCandidates.size(), needCount);
+            // 返回所有可用的候选人
+            return new ArrayList<>(availableCandidates);
+        }
+        
         // 计算每个用户的当前稀缺度
         Map<String, Integer> currentUserScarcity = new HashMap<>();
         for (String user : availableCandidates) {
@@ -2480,6 +2505,16 @@ public class LotDrawService {
                 remain--;
             }
         }
+        
+        // 最终检查：确保返回了足够数量的用户
+        if (result.size() < needCount) {
+            log.debug("[抽签] selectBestUsers返回{}人，但需要{}人，补充剩余候选人", result.size(), needCount);
+            // 补充剩余候选人
+            List<String> remaining = new ArrayList<>(availableCandidates);
+            remaining.removeAll(result);
+            result.addAll(remaining.subList(0, Math.min(needCount - result.size(), remaining.size())));
+        }
+        
         return result;
     }
 
