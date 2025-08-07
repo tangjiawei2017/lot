@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.lottery.mapper.LotMapper">
+    <select id="getRuleGroupsByActivityId" resultType="com.example.lottery.entity.LotRuleGroup">
+        SELECT 
+            id,
+            activity_id as activityId,
+            rule_id as ruleId,
+            sign_id as signId,
+            user_codes as userCodes,
+            user_count as userCount,
+            priority,
+            create_time as createTime,
+            count_value as countValue,
+            count_symbol as countSymbol
+        FROM lot_rule_group 
+        WHERE activity_id = #{activityId}
+        ORDER BY priority ASC
+    </select>
+    <select id="getRuleGroupDetailsByGroupId" resultType="com.example.lottery.entity.LotRuleGroupDetail">
+        SELECT 
+            id,
+            group_id as groupId,
+            user_code as userCode,
+            create_time as createTime
+        FROM lot_rule_group_detail 
+        WHERE group_id = #{groupId}
+    </select>
+    <insert id="batchInsertLotRecords" parameterType="java.util.List">
+        INSERT INTO lot_record (
+            activity_id, sign_id, rule_id, user_code, draw_time, create_time, description
+        ) VALUES 
+        <foreach collection="records" item="item" separator=",">
+            (
+                #{item.activityId}, #{item.signId}, #{item.ruleId}, #{item.userCode}, #{item.drawTime}, #{item.createTime}, #{item.description}
+            )
+        </foreach>
+    </insert>
+    <select id="getRuleById" resultType="com.example.lottery.entity.LotRule">
+        SELECT 
+            id,
+            activity_id as activityId,
+            sign_id as signId,
+            rule_name as ruleName,
+            rule_type as ruleType,
+            rule_value as ruleValue,
+            priority,
+            create_time as createTime,
+            update_time as updateTime
+        FROM lot_rule 
+        WHERE id = #{ruleId}
+    </select>
+    
+    <select id="getRulesBySignId" resultType="com.example.lottery.entity.LotRule">
+        SELECT 
+            id,
+            activity_id as activityId,
+            sign_id as signId,
+            rule_name as ruleName,
+            rule_type as ruleType,
+            rule_value as ruleValue,
+            priority,
+            create_time as createTime,
+            update_time as updateTime
+        FROM lot_rule 
+        WHERE sign_id = #{signId}
+        ORDER BY priority ASC, id ASC
+    </select>
+    <select id="getSignById" resultType="com.example.lottery.entity.LotSign">
+        SELECT 
+            id,
+            activity_id as activityId,
+            sign_name as signName,
+            sign_type as signType,
+            sign_capacity as totalCount,
+            sign_description as signDescription,
+            is_active as isActive,
+            create_time as createdAt,
+            update_time as updatedAt
+        FROM lot_sign 
+        WHERE id = #{signId}
+    </select>
+    <delete id="deleteLotRecordsByActivityId">
+        DELETE FROM lot_record WHERE activity_id = #{activityId}
+    </delete>
+    <delete id="deleteLotRuleGroupDetailsByActivityId">
+        DELETE FROM lot_rule_group_detail WHERE group_id IN (SELECT id FROM lot_rule_group WHERE activity_id = #{activityId})
+    </delete>
+    <delete id="deleteLotRuleGroupsByActivityId">
+        DELETE FROM lot_rule_group WHERE activity_id = #{activityId}
+    </delete>
+    <insert id="insertLotRuleGroup" parameterType="com.example.lottery.entity.LotRuleGroup">
+        INSERT INTO lot_rule_group (id, activity_id, rule_id, sign_id, priority, count_value, count_symbol)
+        VALUES (#{id}, #{activityId}, #{ruleId}, #{signId}, #{priority}, #{countValue}, #{countSymbol})
+    </insert>
+    <insert id="insertLotRuleGroupDetail">
+        INSERT INTO lot_rule_group_detail (group_id, user_code) VALUES (#{groupId}, #{userCode})
+    </insert>
+    <select id="selectLotRecordsByActivityId" resultType="com.example.lottery.entity.LotRecord">
+        SELECT * FROM lot_record WHERE activity_id = #{activityId}
+    </select>
+    <select id="getAllJoinUserIdsByActivityId" resultType="string">
+        SELECT DISTINCT user_id FROM lot_user_join WHERE activity_id = #{activityId}
+    </select>
+    
+    <select id="getSignsByActivityId" resultType="com.example.lottery.entity.LotSign">
+        SELECT 
+            id,
+            activity_id as activityId,
+            sign_name as signName,
+            sign_type as signType,
+            sign_capacity as totalCount,
+            sign_description as signDescription,
+            is_active as isActive,
+            create_time as createdAt,
+            update_time as updatedAt
+        FROM lot_sign 
+        WHERE activity_id = #{activityId}
+        ORDER BY id ASC
+    </select>
+    
+    <select id="getRulesByActivityId" resultType="com.example.lottery.entity.LotRule">
+        SELECT 
+            id,
+            activity_id as activityId,
+            sign_id as signId,
+            rule_name as ruleName,
+            field_name as fieldName,
+            field_operator as fieldOperator,
+            field_value as fieldValue,
+            priority,
+            is_active as isActive,
+            create_time as createdAt,
+            update_time as updatedAt,
+            count_symbol as countSymbol,
+            count_value as countValue
+        FROM lot_rule 
+        WHERE activity_id = #{activityId}
+        ORDER BY priority ASC, id ASC
+    </select>
+    
+
+</mapper> 

@@ -1,0 +1,46 @@
+<configuration>
+    <!-- 默认日志文件 -->
+    <appender name="DEFAULT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/lottery-default.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/lottery-default.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 抽签结果专用日志文件 -->
+    <appender name="LOT_RESULT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/lottery-lot-result.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/lottery-draw-result.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 指定包/类的日志到默认文件 -->
+    <logger name="com.example.lottery" level="INFO" additivity="false">
+        <appender-ref ref="DEFAULT_FILE"/>
+    </logger>
+
+    <!-- 指定“抽签结果”日志到专用文件 -->
+    <logger name="lotResultLogger" level="INFO" additivity="false">
+        <appender-ref ref="LOT_RESULT_FILE"/>
+    </logger>
+
+    <!-- 控制台输出（可选） -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="WARN">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="DEFAULT_FILE"/>
+    </root>
+</configuration> 

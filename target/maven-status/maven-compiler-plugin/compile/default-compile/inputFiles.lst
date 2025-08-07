@@ -1,0 +1,15 @@
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/utils/SpringContextHolder.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/service/LotDrawService.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/UserCompleteInfo.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/LotUserJoin.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/LotSign.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/LotRuleGroupDetail.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/LotRecord.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/LotRuleGroup.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/LotteryUserInfo.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/LotteryApplication.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/LotUserTags.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/mapper/LotMapper.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/config/ThreadPoolConfig.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/PreprocessStats.java
+/Users/tangjiawei/GolandProjects/lot/src/main/java/com/example/lottery/entity/LotRule.java

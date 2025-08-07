@@ -1,0 +1,160 @@
+2025-08-07 10:43:41 [main] INFO  c.e.l.service.LotDrawServiceTest - Starting LotDrawServiceTest using Java 21.0.8 with PID 30426 (started by tangjiawei in /Users/tangjiawei/GolandProjects/lot)
+2025-08-07 10:43:41 [main] INFO  c.e.l.service.LotDrawServiceTest - The following 1 profile is active: "dev"
+2025-08-07 10:43:41 [main] DEBUG o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@44c5a16f
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.config.ThreadPoolConfig - 抽签预处理线程池初始化完成 - 核心线程数: 2, 最大线程数: 5, 队列容量: 100
+2025-08-07 10:43:42 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 2 mappings in 'requestMappingHandlerMapping'
+2025-08-07 10:43:42 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-08-07 10:43:42 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-08-07 10:43:42 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - Started LotDrawServiceTest in 1.539 seconds (process running for 1.85)
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - === 测试466人 + 图片规则配置场景 ===
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始多签项协调分配 (第1次尝试)
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始分组规则收集
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - P1规则24条, 非P1规则0条
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始P1规则全局分配
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - P1规则2003分配1人（签项2剩余容量：58人）
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - P1规则1003分配1人（签项1剩余容量：58人）
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - P1规则3003分配1人（签项3剩余容量：58人）
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - P1规则全局分配完成
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - P1规则分配后验证
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [验证] 开始全局验证分配唯一性...
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [验证通过] 全局验证完成，共 3 个用户分配正确
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - P1规则分配验证通过
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始非P1规则分配，共0条
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 非P1规则分配完成
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始处理没有规则组的签项
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 发现0个签项没有规则组
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 处理没有规则组的签项完成
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始签项强制补齐分配
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项1强制补齐57人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项1补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项2强制补齐57人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项2补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项3强制补齐57人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项3补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项4强制补齐58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项4补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项5强制补齐58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项5补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项6强制补齐58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项6补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项7强制补齐59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项7补齐完成: 59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项8强制补齐59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项8补齐完成: 59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项补齐分配完成
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 规则分配完成，开始验证分配唯一性
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [验证] 开始全局验证分配唯一性...
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [验证通过] 全局验证完成，共 466 个用户分配正确
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 分配验证通过，统计信息:
+分配统计:
+- 总分配用户数: 466
+- 映射表大小: 466
+- 签项数量: 8
+- 签项 1: 58 人
+- 签项 2: 58 人
+- 签项 3: 58 人
+- 签项 4: 58 人
+- 签项 5: 58 人
+- 签项 6: 58 人
+- 签项 7: 59 人
+- 签项 8: 59 人
+
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 最终验证通过，统计信息:
+分配统计:
+- 总分配用户数: 466
+- 映射表大小: 466
+- 签项数量: 8
+- 签项 1: 58 人
+- 签项 2: 58 人
+- 签项 3: 58 人
+- 签项 4: 58 人
+- 签项 5: 58 人
+- 签项 6: 58 人
+- 签项 7: 59 人
+- 签项 8: 59 人
+
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始最终人数验证
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项1人数验证通过: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项2人数验证通过: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项3人数验证通过: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项4人数验证通过: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项5人数验证通过: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项6人数验证通过: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项7人数验证通过: 59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项8人数验证通过: 59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 总体偏差: 0/466人, 偏差比例: {:.2%}
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 偏差在可接受范围内，验证通过
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始写入数据库
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始写入数据库前兜底验证
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项1人数正确：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项2人数正确：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项3人数正确：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项4人数正确：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项5人数正确：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项6人数正确：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项7人数正确：59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项8人数正确：59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 兜底验证通过：签项1人数正确58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 兜底验证通过：签项2人数正确58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 兜底验证通过：签项3人数正确58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 兜底验证通过：签项4人数正确58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 兜底验证通过：签项5人数正确58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 兜底验证通过：签项6人数正确58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 兜底验证通过：签项7人数正确59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 兜底验证通过：签项8人数正确59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 兜底验证全部通过，开始写入数据库
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 已写入lot_record 466条
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始全局均衡补齐分配
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项1全局均衡补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项2全局均衡补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项3全局均衡补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项4全局均衡补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项5全局均衡补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项6全局均衡补齐完成: 58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项7全局均衡补齐完成: 59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项8全局均衡补齐完成: 59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项1分配完成，目标58人，实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项2分配完成，目标58人，实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项3分配完成，目标58人，实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项4分配完成，目标58人，实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项5分配完成，目标58人，实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项6分配完成，目标58人，实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项7分配完成，目标59人，实际59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 签项8分配完成，目标59人，实际59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 全局唯一最终修正完成，总分配用户数：466
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 开始最终强制校验和修正
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 所有签项人数校验通过，无需修正
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - 所有签项人数校验通过，无需修正
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 签项1最终验证通过：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 签项2最终验证通过：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 签项3最终验证通过：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 签项4最终验证通过：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 签项5最终验证通过：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 签项6最终验证通过：58人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 签项7最终验证通过：59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 签项8最终验证通过：59人
+2025-08-07 10:43:42 [main] INFO  c.e.lottery.service.LotDrawService - [抽签] 活动705788898775109 - ✅ 所有签项人数最终验证通过，分配完成
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项1: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项2: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项3: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项4: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项5: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项6: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项7: 目标59人, 实际59人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项8: 目标59人, 实际59人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - === 图片规则 + 466人测试结果 ===
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 分配耗时: 13ms
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 总分配用户数: 466
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 各签项分配结果:
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项1: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项2: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项3: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项4: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项5: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项6: 目标58人, 实际58人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项7: 目标59人, 实际59人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - 签项8: 目标59人, 实际59人
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - ✅ 算法优化生效！分配在13ms内完成，避免了内存溢出
+2025-08-07 10:43:42 [main] INFO  c.e.l.service.LotDrawServiceTest - ✅ 图片规则配置 + 466人分配测试通过！
+2025-08-07 10:43:43 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@44c5a16f, started on Thu Aug 07 10:43:41 CST 2025
